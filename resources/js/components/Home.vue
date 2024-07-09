@@ -10,7 +10,7 @@
             <img :src="video.snippet.thumbnails.medium.url" alt="">
             <p><b>{{video.snippet.title}}</b></p>
             <p>{{video.snippet.channelTitle}}</p>
-            <button @click="toggleLike(video.id.videoId)">
+            <button @click="toggleLike(video.id.videoId,video.snippet.title,video.snippet.channelTitle)">
                 {{ isLiked(video.id.videoId) ? 'Quitar Like' : 'Like' }}
             </button>
             <!-- <button class="btn btn-success" @click="addLike(video.id.videoId)">Añadir a tu lista de favoritos</button>
@@ -248,11 +248,11 @@ export default {
         //         console.log(`El videoId ${videoId} no se encuentra en la lista de likes.`);
         //     }
         // },
-        toggleLike(videoId) {
+        toggleLike(videoId,titulo,canal) {
             const index = this.likes.indexOf(videoId);
             if (index === -1) {
                 this.likes.push(videoId);
-                axios.post('/add-favorito?&video=' + videoId)
+                axios.post('/add-favorito?&video=' + videoId+'&titulo='+titulo+'&canal='+canal)
                     .then(response => {
                         console.log(response);
                     }).catch((error) => {

@@ -35,6 +35,8 @@ class Home extends Controller
             $favorito = new Favorito;
             $favorito->user_id = $user;
             $favorito->video_id = $request->video;
+            $favorito->titulo = $request->titulo;
+            $favorito->canal = $request->canal;
             $favorito->save();
             DB::commit();
             return $request;
