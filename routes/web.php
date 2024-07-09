@@ -35,4 +35,8 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
     Route::put('update', [Login::class, 'update'])->name('update');
     Route::get('logout',[Login::class, 'logout'])->name('logout');
 
+    Route::get('/todo-favorito',[Home::class, 'todos_favoritos']);
+    Route::post('/add-favorito',[Home::class, 'add_favorito']);
+    Route::delete('/delete-favorito',[Home::class, 'delete_favorito']);
+
 });
