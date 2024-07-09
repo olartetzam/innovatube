@@ -39,4 +39,6 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
     Route::post('/add-favorito',[Home::class, 'add_favorito']);
     Route::delete('/delete-favorito',[Home::class, 'delete_favorito']);
 
+    Route::get('/buscar-favorito',[Home::class,'buscar_favorito']);
+
 });

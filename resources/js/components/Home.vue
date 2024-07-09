@@ -1,20 +1,24 @@
 <template>
     <div class="my-2">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" aria-describedby="basic-addon2" v-model="buscador">
+        <div class="input-group my-3 p-3">
+            <input type="text" class="form-control p-3" aria-describedby="basic-addon2" v-model="buscador">
             <button type="button" class="btn btn-primary input-group-text" id="basic-addon2" @click="getVideos">Buscar</button>
         </div>
     </div>
     <div class="row my-2">
         <div class="col-sm-12 col-md-6 col-lg-4" v-for="video in info" :key="video.id.videoId">
-            <img :src="video.snippet.thumbnails.medium.url" alt="">
-            <p><b>{{video.snippet.title}}</b></p>
-            <p>{{video.snippet.channelTitle}}</p>
-            <button @click="toggleLike(video.id.videoId,video.snippet.title,video.snippet.channelTitle)">
-                {{ isLiked(video.id.videoId) ? 'Quitar Like' : 'Like' }}
-            </button>
-            <!-- <button class="btn btn-success" @click="addLike(video.id.videoId)">Añadir a tu lista de favoritos</button>
-            <button class="btn btn-danger" @click="deleteLike(video.id.videoId)">Quitar de tu lista de favoritos</button> -->
+            <div class="card shadow my-3">
+                <img :src="video.snippet.thumbnails.medium.url" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{video.snippet.title}}</h5>
+                    <p class="card-text">{{video.snippet.channelTitle}}</p>
+                    <button class="btn btn-primary" @click="toggleLike(video.id.videoId,video.snippet.title,video.snippet.channelTitle)">
+                        {{ isLiked(video.id.videoId) ? 'Quitar Favorito' : 'Añadir a Favoritos' }}
+                    </button>
+                    <!-- <button class="btn btn-success" @click="addLike(video.id.videoId)">Añadir a tu lista de favoritos</button>
+                    <button class="btn btn-danger" @click="deleteLike(video.id.videoId)">Quitar de tu lista de favoritos</button> -->
+                </div>
+            </div>
         </div>
     </div>
 </template>

@@ -21,7 +21,19 @@ class Home extends Controller
     }
 
     public function todos_favoritos(Request $request){
-        $favoritos = Favorito::where('user_id',2)->get();
+        $user = Auth::user()->id;
+        $favoritos = Favorito::where('user_id',$user)->get();
+        Log::info($favoritos);
+        return $favoritos;
+    }
+
+    public function buscar_favorito(Request $request){
+        $busqueda = $request->busqueda;
+        $user = Auth::user()->id;
+        $favoritos = Favorito::where('user_id',$user)
+        ->where('titulo', 'LIKE', '%' . $busqueda . '%')
+        ->orWhere('canal', 'LIKE', '%' . $busqueda . '%')
+        ->get();
         Log::info($favoritos);
         return $favoritos;
     }
