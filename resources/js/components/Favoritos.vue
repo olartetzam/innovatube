@@ -1,10 +1,10 @@
 <template>
     <div class="my-2">
         <form >
-            <div class="input-group mb-3">
+            <div class="input-group my-3 p-3">
                 <input 
                     type="text" 
-                    class="form-control" 
+                    class="form-control p-3" 
                     aria-describedby="Search"
                     v-model = "buscador"
                     @keyup="buscarFavorito"
@@ -15,7 +15,7 @@
     </div>
     <div class="row my-2">
         <div class="col-sm-12 col-md-6 col-lg-4" v-for="video in info" :key="video.id.videoId">
-             <div class="card">
+             <div class="card shadow my-3">
                 <img :src="video.snippet.thumbnails.medium.url" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title">{{video.snippet.title}}</h5>
